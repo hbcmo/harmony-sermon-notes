@@ -182,7 +182,7 @@ export default function App() {
 
       {/* Pastor Login */}
       {!isAdmin && (
-        <div className="mt-8 text-center">
+        <div className="mt-24 text-center">
           <button
             onClick={() => setShowLogin(true)}
             className="text-xs text-gray-400 hover:text-gray-600 underline"
@@ -400,6 +400,14 @@ function SermonView({ sermon, sermons, openPastModal }: any) {
     localStorage.setItem(storageKey, JSON.stringify(notes));
   }, [notes, storageKey]);
 
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saved'>('idle');
+
+  const handleSaveNotes = () => {
+    localStorage.setItem(storageKey, JSON.stringify(notes));
+    setSaveStatus('saved');
+    setTimeout(() => setSaveStatus('idle'), 2000);
+  };
+
   const handleTap = (i: number) => {
     setRevealed({ ...revealed, [i]: true });
     setOpen(open === i ? null : i);
@@ -437,6 +445,18 @@ function SermonView({ sermon, sermons, openPastModal }: any) {
         >
           View Past Sermons
         </button>
+      </div>
+
+      <div className="text-center mb-6">
+        <button
+          onClick={handleSaveNotes}
+          className="px-4 py-2 bg-green-600 text-white rounded"
+        >
+          Save Notes
+        </button>
+        {saveStatus === 'saved' && (
+          <div className="mt-2 text-sm text-green-700">Notes saved</div>
+        )}
       </div>
 
       {/* Sermon Mode */}

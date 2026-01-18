@@ -13,6 +13,11 @@ body {
   background-color: #f3f4f6; /* gray-100 */
 }
 
+/* Buttons */
+button {
+  @apply bg-primary text-white font-semibold py-2 px-4 rounded shadow;
+}
+
 /* Print-friendly mode */
 @media print {
   body {

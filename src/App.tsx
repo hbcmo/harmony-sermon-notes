@@ -22,7 +22,7 @@ export default function App() {
   const [sermons, setSermons] = useState([
     {
       id: 1,
-      title: 'Believing the Word Before Seeing the Work',
+      title: 'The Incredible Reach of God and His Gospel',
       passage: 'John 4:43–54',
       mainPoint:
         'Jesus creates true faith by calling people to trust His Word before they see the result.',
